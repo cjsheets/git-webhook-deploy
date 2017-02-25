@@ -1,0 +1,5 @@
+ssh/
+settings.py
+*.pyc
+bitbucket_payload_actual.txt
+github_payload_actual.txt
