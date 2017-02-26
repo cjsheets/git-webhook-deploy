@@ -1,4 +1,5 @@
 ssh/
+.vscode
 settings.py
 *.pyc
 bitbucket_payload_actual.txt
