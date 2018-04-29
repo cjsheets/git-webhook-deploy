@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-  Copy this file to settings.py and adjust as necissary
+  Copy this file to settings.py and adjust as necessary
 """
 
 #| Permit connections from 127.0.0.1 (ex. for ngrok)

@@ -1,0 +1,6 @@
+flask==0.11.1
+gunicorn==19.6.0
+ipaddr==2.1.11
+requests==2.10.0
+sh==1.11
+werkzeug==0.11.10
