@@ -23,7 +23,13 @@ First, you need to copy `settings_example.py` to `settings.py`:
   * Remove any providers you're not using
   * Each object in the `repo_branch` array represents a repository to deploy
 
+**Customizing**
 
+Depending on your provider, the JSON provided in the HTTP request may vary from what `git_deploy.py` expects. This script is fairly short to make it easier to customize. Try the Development instructions below for customization.
+
+If you have any trouble, I recommend capturing the JSON using a tool like ngrok and ensuring the hard-coded values (ex. `data['repository']['name']`) match those in your request.
+
+I included sample payloads in the `/doc/` folder, however I imagine those are susceptible to change.
 
 Development
 -----------
@@ -36,7 +42,7 @@ source .env/bin/activate
 pip install -r doc/requirements.txt
 ```
 
-Next, prepare `settings.py` as described above.
+Next, prepare `settings.py` as described above. Change `LOGLEVEL = 'DEBUG'`
 
 Start a flask-listener to receive webhooks:
 
@@ -51,6 +57,10 @@ I like to use [ngrok](https://ngrok.com/download) to expose our newly created se
 ```
 
 Finally, trigger a POST message from your git provider of choice.
+
+Watch the Flask console for messages about the request. If you're using ngrok, you can visit its web interface and replay the webhook until you get the desired result.
+
+Happy Deploying!
 
 ### To-Do:
 

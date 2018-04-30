@@ -27,6 +27,8 @@ LOGLEVEL = 'DEBUG'
 
 PROVIDERS = {}
 
+#| Remove any providers you're not using and adjust 'repo_branch':
+
 PROVIDERS['github'] = {
     'whitelist_ips': [
         '207.97.227.224/27', '173.203.140.192/27', '204.232.175.64/27',
@@ -59,4 +61,20 @@ PROVIDERS['bitbucket'] = {
             'local_repo_dir': '/var/www/git-webhook-deploy/public'
         },
     ]
+}
+
+PROVIDERS['vsts'] = {
+  'whitelist_ips' : ['207.97.227.224/27', '173.203.140.192/27',
+				   '204.232.175.64/27', '72.4.117.96/27',
+				   '192.30.252.0/22', '204.232.175.64/27'],
+  'ssh_account' : '<account_name>@vs-ssh.visualstudio.com',
+  'repo_branch'	 : [ {
+    'remote_repo_user' : 'chad@sheets.ch',
+    'remote_repo_name' : 'git-webhook-deploy',
+    'remote_repo_branch' : 'master',
+    'remote_repo_action' : 'push',
+    'local_repo_dir' : '/var/www/git-webhook-deploy/public',
+    'vsts_ssh_string' : 'ssh://<user-name>@vs-ssh.visualstudio.com:22/<project-name>/_ssh/'
+  },
+  ]
 }

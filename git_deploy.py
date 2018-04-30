@@ -83,8 +83,12 @@ def git_pull(git_pull_params):
   dest_directory = git_pull_params['repo_dir']
   repo_name = git_pull_params['repo_name']
   branch_name = git_pull_params['repo_branch']
-  repo_url = git_pull_params['ssh_account'] + ':' + git_pull_params['repo_user'] + \
-      '/' + git_pull_params['repo_name'] + '.git'
+
+  if git_pull_params['provider'] == 'VSTS':
+    repo_url = git_pull_params['vsts_ssh_string'] + git_pull_params['repo_name']
+  else:
+    repo_url = git_pull_params['ssh_account'] + ':' + git_pull_params['repo_user'] + \
+        '/' + git_pull_params['repo_name'] + '.git'
 
   LOGGER.debug('Ensuring destination directory exists: %s', dest_directory)
   subprocess.call('mkdir -p ' + dest_directory, shell=True)
@@ -94,7 +98,7 @@ def git_pull(git_pull_params):
     LOGGER.info("Initializing repository: %s", repo_url)
     subprocess.call('git init', cwd=dest_directory, shell=True)
     subprocess.call(
-        'git remote add -f origin' + repo_url, cwd=dest_directory, shell=True)
+        'git remote add -f origin ' + repo_url, cwd=dest_directory, shell=True)
 
   try:
     subprocess.call(
@@ -184,14 +188,49 @@ def parse_bitbucket_data(data):
   return []
 
 
+def parse_vsts_data(data):
+  assert 'resource' in data
+  assert 'publisherId' in data
+  assert 'pushedBy' in data['resource']
+  assert 'uniqueName' in data['resource']['pushedBy']
+
+  git_pull_params = {}
+  for repo in settings.PROVIDERS['vsts']['repo_branch']:
+    if (repo['remote_repo_user'] == data['resource']['pushedBy']['uniqueName']) and \
+            repo['remote_repo_name'] == data['resource']['repository']['name'] and \
+            'refs/heads/' + repo['remote_repo_branch'] == data['resource']['refUpdates'][0]['name']:
+      # correct default_branch, check correct branch
+      LOGGER.debug("VSTS webhook matched to settings")
+
+      git_pull_params = {
+          'provider': 'VSTS',
+          'ssh_account': settings.PROVIDERS['vsts']['ssh_account'],
+          'repo_user': repo['remote_repo_user'],
+          'repo_name': repo['remote_repo_name'],
+          'repo_branch': repo['remote_repo_branch'],
+          'repo_dir': repo['local_repo_dir'],
+          'vsts_ssh_string': repo['vsts_ssh_string']
+      }
+      return git_pull_params
+
+  LOGGER.debug('Unable to match data with repo in settings.py')
+
+  return []
+
+
 def parse_data(data):
   """ Extract important fields from webhook """
   LOGGER.info('parsing data')
-  if 'commits' not in data and 'commits_url' not in data['repository']:
+  LOGGER.info('resourceContainers' in data)
+  if 'resourceContainers' in data and 'resource' in data:
+    LOGGER.info("Message originated from VSTS, parsing data")
+    git_pull_params = parse_vsts_data(data)
+
+  elif 'commits' not in data and 'commits_url' not in data['repository']:
     LOGGER.info("POST request didn't contain a commit, is not actionable")
     return []
 
-  if 'head_commit' in data and 'pusher' in data and 'repository' in data \
+  elif 'head_commit' in data and 'pusher' in data and 'repository' in data \
           and 'sender' in data:
     LOGGER.info("Message originated from GitHub, parsing data")
     git_pull_params = parse_github_data(data)

@@ -1,0 +1,89 @@
+{
+  "subscriptionId": "476f8477-c0f8-4fc0-baae-104caeabead0",
+  "notificationId": 1,
+  "id": "476f8477-c0f8-4fc0-baae-104caeabead0",
+  "eventType": "build.complete",
+  "publisherId": "tfs",
+  "message": {
+    "text": "Build ConsumerAddressModule_20150407.2 succeeded",
+    "html": "Build <a href=\"https://fabrikam-fiber-inc.visualstudio.com/web/build.aspx?pcguid=476f8477-c0f8-4fc0-baae-104caeabead0&amp;builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f3\">ConsumerAddressModule_20150407.2</a> succeeded",
+    "markdown": "Build [ConsumerAddressModule_20150407.2](https://fabrikam-fiber-inc.visualstudio.com/web/build.aspx?pcguid=476f8477-c0f8-4fc0-baae-104caeabead0&builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f3) succeeded"
+  },
+  "detailedMessage": {
+    "text": "Build ConsumerAddressModule_20150407.2 succeeded",
+    "html": "Build <a href=\"https://fabrikam-fiber-inc.visualstudio.com/web/build.aspx?pcguid=476f8477-c0f8-4fc0-baae-104caeabead0&amp;builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f3\">ConsumerAddressModule_20150407.2</a> succeeded",
+    "markdown": "Build [ConsumerAddressModule_20150407.2](https://fabrikam-fiber-inc.visualstudio.com/web/build.aspx?pcguid=476f8477-c0f8-4fc0-baae-104caeabead0&builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f3) succeeded"
+  },
+  "resource": {
+    "uri": "vstfs:///Build/Build/2",
+    "id": 2,
+    "buildNumber": "ConsumerAddressModule_20150407.1",
+    "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/476f8477-c0f8-4fc0-baae-104caeabead0/_apis/build/Builds/2",
+    "startTime": "2015-04-07T18:04:06.83Z",
+    "finishTime": "2015-04-07T18:06:10.69Z",
+    "reason": "manual",
+    "status": "succeeded",
+    "dropLocation": "#/3/drop",
+    "drop": {
+      "location": "#/3/drop",
+      "type": "container",
+      "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/resources/Containers/3/drop",
+      "downloadUrl": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/resources/Containers/3/drop?api-version=1.0&$format=zip&downloadFileName=ConsumerAddressModule_20150407.1_drop"
+    },
+    "log": {
+      "type": "container",
+      "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/resources/Containers/3/logs",
+      "downloadUrl": "https://fabrikam-fiber-inc.visualstudio.com/_apis/resources/Containers/3/logs?api-version=1.0&$format=zip&downloadFileName=ConsumerAddressModule_20150407.1_logs"
+    },
+    "sourceGetVersion": "LG:refs/heads/master:600c52d2d5b655caa111abfd863e5a9bd304bb0e",
+    "lastChangedBy": {
+      "displayName": "Normal Paulk",
+      "url": "https://fabrikam-fiber-inc.visualstudio.com/_apis/Identities/476f8477-c0f8-4fc0-baae-104caeabead0",
+      "id": "476f8477-c0f8-4fc0-baae-104caeabead0",
+      "uniqueName": "fabrikamfiber16@hotmail.com",
+      "imageUrl": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_api/_common/identityImage?id=476f8477-c0f8-4fc0-baae-104caeabead0"
+    },
+    "retainIndefinitely": false,
+    "hasDiagnostics": true,
+    "definition": {
+      "batchSize": 1,
+      "triggerType": "none",
+      "definitionType": "xaml",
+      "id": 2,
+      "name": "ConsumerAddressModule",
+      "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/476f8477-c0f8-4fc0-baae-104caeabead0/_apis/build/Definitions/2"
+    },
+    "queue": {
+      "queueType": "buildController",
+      "id": 4,
+      "name": "Hosted Build Controller",
+      "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/build/Queues/4"
+    },
+    "requests": [
+      {
+        "id": 1,
+        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/476f8477-c0f8-4fc0-baae-104caeabead0/_apis/build/Requests/1",
+        "requestedFor": {
+          "displayName": "Normal Paulk",
+          "url": "https://fabrikam-fiber-inc.visualstudio.com/_apis/Identities/476f8477-c0f8-4fc0-baae-104caeabead0",
+          "id": "476f8477-c0f8-4fc0-baae-104caeabead0",
+          "uniqueName": "fabrikamfiber16@hotmail.com",
+          "imageUrl": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_api/_common/identityImage?id=476f8477-c0f8-4fc0-baae-104caeabead0"
+        }
+      }
+    ]
+  },
+  "resourceVersion": "1.0",
+  "resourceContainers": {
+    "collection": {
+      "id": "476f8477-c0f8-4fc0-baae-104caeabead0"
+    },
+    "account": {
+      "id": "476f8477-c0f8-4fc0-baae-104caeabead0"
+    },
+    "project": {
+      "id": "476f8477-c0f8-4fc0-baae-104caeabead0"
+    }
+  },
+  "createdDate": "2018-04-29T23:53:22.6030695Z"
+}
